@@ -6,8 +6,13 @@
 <p>WEEK1</p>
 <p>教學如何改網路</p>
 <p><img alt="" height="578" src="/images/Q81g7WA.png" width="475"/></p>
+<p>內建密碼:admin</p>
+<p>改版----先打git add .        再打git commit -m"名稱"         之後就打git push</p>
+<p>git push 完之後要等一下下(5~10分鐘左右),再重新整理就可以看到改過的畫面了。</p>
 <p></p>
-<h2>game1</h2>
+<h5>亂碼器程式碼:&lt;h3&gt;game2&lt;/h3&gt;<br/>&lt;p&gt;&lt;strong&gt;&lt;button onclick="myFunction()"&gt;Try it&lt;/button&gt;&lt;/strong&gt;&lt;/p&gt;<br/>&lt;p id="demo"&gt;&lt;img alt="" height="234" src="/images/th.jpg" width="293"&gt;&lt;/p&gt;<br/>&lt;p&gt;&lt;strong&gt;1~100隨機選號&lt;/strong&gt;&lt;/p&gt;<br/>&lt;script&gt;// &lt;![CDATA[<br/>function myFunction() {<br/> document.getElementById("demo").innerHTML = Math.floor(Math.random()*100+1);<br/>}<br/>// ]]&gt;&lt;/script&gt;</h5>
+<p>骰子遊戲程式碼:&lt;h2&gt;game1&lt;/h2&gt;<br/>&lt;p&gt;&amp;nbsp;&lt;img alt="" height="273" src="/images/th (5).jpg" width="485"&gt;&lt;/p&gt;<br/>&lt;script type="text/javascript"&gt;// &lt;![CDATA[<br/>var cwidth = 400;<br/> var cheight = 300;<br/> var dicex = 50;<br/> var dicey = 50;<br/> var dicewidth = 100;<br/> var diceheight = 100;<br/> var dotrad = 6;<br/> var ctx;<br/> var dx;<br/> var dy;<br/> var firstturn = true;<br/> var point;<br/>function throwdice() {<br/> var sum;<br/> var ch = 1+Math.floor(Math.random()*6);<br/> sum = ch;<br/> dx = dicex;<br/> dy = dicey;<br/> drawface(ch);<br/> dx = dicex + 150;<br/> ch=1 + Math.floor(Math.random()*6);<br/> sum += ch;<br/> drawface(ch);<br/> if (firstturn) {<br/> switch(sum) {<br/> case 7:<br/> case 11:<br/> document.f.outcome.value="You win!";<br/> break;<br/> case 2:<br/> case 3:<br/> case 12:<br/> document.f.outcome.value="You lose!";<br/> break;<br/> default:<br/> point = sum;<br/> document.f.pv.value=point;<br/> firstturn = false;<br/> document.f.stage.value="Need follow-up throw.";<br/> document.f.outcome.value=" ";<br/> }<br/> }<br/> else {<br/> switch(sum) {<br/> case point:<br/> document.f.outcome.value="You win!";<br/> document.f.stage.value="Back to first throw.";<br/> document.f.pv.value=" ";<br/> firstturn = true;<br/> break;<br/> case 7:<br/> document.f.outcome.value="You lose!";<br/> document.f.stage.value="Back to first throw.";<br/> document.f.pv.value=" ";<br/> firstturn = true;<br/> }<br/> }<br/>}<br/>function drawface(n) {<br/> ctx = document.getElementById('canvas').getContext('2d'); <br/> ctx.lineWidth = 5;<br/> ctx.clearRect(dx,dy,dicewidth,diceheight);<br/> ctx.strokeRect(dx,dy,dicewidth,diceheight)<br/> var dotx;<br/> var doty;<br/> ctx.fillStyle = "#009966";<br/> switch(n) {<br/> case 1:<br/> draw1();<br/> break;<br/> case 2:<br/> draw2();<br/> break;<br/> case 3:<br/> draw2();<br/> draw1();<br/> break;<br/> case 4:<br/> draw4();<br/> break;<br/> case 5:<br/> draw4();<br/> draw1();<br/> break;<br/> case 6:<br/> draw4();<br/> draw2mid();<br/> break;<br/> <br/> }<br/>}<br/>function draw1() {<br/> var dotx;<br/> var doty;<br/> ctx.beginPath();<br/> dotx = dx + .5*dicewidth;<br/> doty = dy + .5*diceheight;<br/> ctx.arc(dotx,doty,dotrad,0,Math.PI*2,true);<br/> ctx.closePath();<br/> ctx.fill();<br/>}<br/>function draw2() {<br/> var dotx;<br/> var doty;<br/> ctx.beginPath();<br/> dotx = dx + 3*dotrad;<br/> doty = dy + 3*dotrad;<br/> ctx.arc(dotx,doty,dotrad,0,Math.PI*2,true);<br/> dotx = dx+dicewidth-3*dotrad;<br/> doty = dy+diceheight-3*dotrad;<br/> ctx.arc(dotx,doty,dotrad,0,Math.PI*2,true);<br/> ctx.closePath();<br/> ctx.fill();<br/>}<br/>function draw4() {<br/> var dotx;<br/> var doty;<br/> ctx.beginPath();<br/> dotx = dx + 3*dotrad;<br/> doty = dy + 3*dotrad;<br/> ctx.arc(dotx,doty,dotrad,0,Math.PI*2,true);<br/> dotx = dx+dicewidth-3*dotrad;<br/> doty = dy+diceheight-3*dotrad;<br/> ctx.arc(dotx,doty,dotrad,0,Math.PI*2,true);<br/> ctx.closePath();<br/> ctx.fill();<br/> ctx.beginPath();<br/> dotx = dx + 3*dotrad;<br/> doty = dy + diceheight-3*dotrad; //no change<br/> ctx.arc(dotx,doty,dotrad,0,Math.PI*2,true);<br/> dotx = dx+dicewidth-3*dotrad;<br/> doty = dy+ 3*dotrad;<br/> ctx.arc(dotx,doty,dotrad,0,Math.PI*2,true);<br/> ctx.closePath();<br/> ctx.fill(); <br/>}<br/>function draw2mid() {<br/> var dotx;<br/> var doty;<br/> ctx.beginPath();<br/> dotx = dx + 3*dotrad;<br/> doty = dy + .5*diceheight;<br/> ctx.arc(dotx,doty,dotrad,0,Math.PI*2,true);<br/> dotx = dx+dicewidth-3*dotrad;<br/> doty = dy + .5*diceheight; //no change<br/> ctx.arc(dotx,doty,dotrad,0,Math.PI*2,true);<br/> ctx.closePath();<br/> ctx.fill();<br/>}<br/>// ]]&gt;&lt;/script&gt;<br/>&lt;p&gt;&lt;canvas height="300" id="canvas" width="400"&gt; Your browser doesn't support the HTML5 element canvas. &lt;/canvas&gt; &lt;br&gt; &lt;button onclick="throwdice();"&gt;Throw dice &lt;/button&gt;&lt;/p&gt;<br/>&lt;form id="f" name="f"&gt;<br/>&lt;p&gt;Stage: &lt;input name="stage" type="text" value="First Throw"&gt; Point: &lt;input name="pv" type="text" value=" "&gt; Outcome: &lt;input name="outcome" type="text" value=" "&gt;&lt;/p&gt;<br/>&lt;/form&gt;<strong></strong></p>
+<p></p><h2>game1</h2>
 <p> <img alt="" height="273" src="/images/th (5).jpg" width="485"/></p>
 <script type="text/javascript">// <![CDATA[
 var cwidth = 400;
@@ -163,8 +168,7 @@ function draw2mid() {
 <p><canvas height="300" id="canvas" width="400"> Your browser doesn't support the HTML5 element canvas. </canvas> <br/> <button onclick="throwdice();">Throw dice </button></p>
 <form id="f" name="f">
 <p>Stage: <input name="stage" type="text" value="First Throw"/> Point: <input name="pv" type="text" value="   "/> Outcome: <input name="outcome" type="text" value="     "/></p>
-</form>
-<h3>game2</h3>
+</form><h3>game2</h3>
 <p><strong><button onclick="myFunction()">Try it</button></strong></p>
 <p id="demo"><img alt="" height="234" src="/images/th.jpg" width="293"/></p>
 <p><strong>1~100隨機選號</strong></p>
@@ -172,8 +176,7 @@ function draw2mid() {
 function myFunction() {
   document.getElementById("demo").innerHTML = Math.floor(Math.random()*100+1);
 }
-// ]]></script>
-<h1>期中影片</h1>
+// ]]></script><h1>期中影片</h1>
 <script>// <![CDATA[
 function myFunction() {
   document.getElementById("demo").innerHTML = Math.floor(Math.random()*100+1);
