@@ -78,9 +78,60 @@ $(document).ready(doSearch);
 
 </ul>
 </confmenu></header>
-<div class='container'><nav><ul id='css3menu1' class='topmenu'><div class="tipue_search_group"><input style="width: 6vw;" type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="Press enter key to search" required></div><li><a href='Welcome.html'>Welcome</a><li><a href='ROC Flag.html'>ROC Flag</a><li><a href='近端配置與管理.html'>近端配置與管理</a><li><a href='GAME1.html'>GAME1</a><li><a href='GAME2.html'>GAME2</a><li><a href='WEEK4.html'>WEEK4</a><li><a href='WEEH5.html'>WEEH5</a><li><a href='WEEK8.html'>WEEK8</a><li><a href='期中影片.html'>期中影片</a></li></ul></nav><section><div id="tipue_search_content"> <a href='ROC Flag.html'>Next</a> >> ROC Flag<br /><h1>Welcome</h1>
-<p>首先是這個衝突(這是新版本內容)</p>
-<p>終於要來處理衝突了(這是產生衝突的版本內容)</p>
-<p>CMSimfly(<a href="https://github.com/chiamingyen/cmsimfly">https://github.com/chiamingyen/cmsimfly</a>)是一套簡單的網際內容管理系統,採用Flask網際框架,以Beautifulsoup解讀分業內容</p>
-<p><img alt="" height="238" src="./../images/th (2).jpg" width="422"/></p>
-<br /> <a href='ROC Flag.html'>Next</a> >> ROC Flag</div></section></div></body></html>
+<div class='container'><nav><ul id='css3menu1' class='topmenu'><div class="tipue_search_group"><input style="width: 6vw;" type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="Press enter key to search" required></div><li><a href='Welcome.html'>Welcome</a><li><a href='ROC Flag.html'>ROC Flag</a><li><a href='近端配置與管理.html'>近端配置與管理</a><li><a href='GAME1.html'>GAME1</a><li><a href='GAME2.html'>GAME2</a><li><a href='WEEK4.html'>WEEK4</a><li><a href='WEEH5.html'>WEEH5</a><li><a href='WEEK8.html'>WEEK8</a><li><a href='期中影片.html'>期中影片</a></li></ul></nav><section><div id="tipue_search_content">WEEK8 << <a href='WEEK8.html'>Previous</a> <br /><h1>期中影片</h1>
+<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/B4rQe7V0Vck" width="560"></iframe></p>
+<p>
+<script type="text/python">// <![CDATA[
+# 導入 doc
+from browser import document as doc
+import math
+
+# 準備繪圖畫布
+canvas = doc["plotarea"]
+ctx = canvas.getContext("2d")
+# 進行座標轉換, x 軸不變, y 軸反向且移動 canvas.height 單位光點
+# ctx.setTransform(1, 0, 0, -1, 0, canvas.height)
+# 以下採用 canvas 原始座標繪圖
+flag_w = canvas.width
+flag_h = canvas.height
+circle_x = flag_w/4
+circle_y = flag_h/4
+# 先畫滿地紅
+ctx.fillStyle='rgb(255, 0, 0)'
+ctx.fillRect(0,0,flag_w,flag_h)
+# 再畫青天
+ctx.fillStyle='rgb(0, 0, 150)'
+ctx.fillRect(0,0,flag_w/2,flag_h/2)
+# 畫十二道光芒白日
+ctx.beginPath()
+star_radius = flag_w/8
+angle = 0
+for i in range(24):
+    angle += 5*math.pi*2/12
+    toX = circle_x + math.cos(angle)*star_radius
+    toY = circle_y + math.sin(angle)*star_radius
+    # 只有 i 為 0 時移動到 toX, toY, 其餘都進行 lineTo
+    if (i):
+        ctx.lineTo(toX, toY)
+    else:
+        ctx.moveTo(toX, toY)
+ctx.closePath()
+# 將填色設為白色
+ctx.fillStyle = '#fff'
+ctx.fill()
+# 白日:藍圈
+ctx.beginPath()
+ctx.arc(circle_x, circle_y, flag_w*17/240, 0, math.pi*2, True)
+ctx.closePath()
+# 填色設為藍色
+ctx.fillStyle = 'rgb(0, 0, 149)'
+ctx.fill()
+# 白日:白心
+ctx.beginPath()
+ctx.arc(circle_x, circle_y, flag_w/16, 0, math.pi*2, True)
+ctx.closePath()
+# 填色設為白色
+ctx.fillStyle = '#fff'
+ctx.fill()
+// ]]></script>
+</p><br />WEEK8 << <a href='WEEK8.html'>Previous</a> </div></section></div></body></html>
